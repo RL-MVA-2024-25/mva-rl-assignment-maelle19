@@ -25,6 +25,7 @@ class ProjectAgent:
         return a
     
     def train(self):
+        #training
         size_collect = 20
         S, A, R, S2 = self.collect_samples(env, size_collect)
         iterations = 700
@@ -88,7 +89,7 @@ class ProjectAgent:
                 max_Q2 = np.max(Q2, axis=1)
                 value = Rewards + gamma * max_Q2
 
-            Q = XGBRegressor()
+            Q = XGBRegressor()  
             Q.fit(SA, value)
             Qfunctions.append(Q)
         return Qfunctions
